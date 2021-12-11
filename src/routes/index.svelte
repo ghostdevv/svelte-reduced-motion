@@ -4,7 +4,7 @@
 
     let showing;
 
-    const accessibleTransition = createTransition([fly, { y: -20 }], draw);
+    const accessibleTransition = createTransition(fly);
 </script>
 
 <p>
@@ -16,7 +16,9 @@
 <button on:click={() => (showing = !showing)}> Toggle </button>
 
 {#if showing}
-    <div transition:accessibleTransition style="padding: 16px 0px;">
+    <div
+        transition:accessibleTransition={{ y: -20 }}
+        style="padding: 16px 0px;">
         Hello World
     </div>
 {/if}
