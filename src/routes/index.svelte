@@ -13,7 +13,7 @@
 
 <hr />
 
-<button on:click={() => (showing = !showing)}> Toggle </button>
+<button on:click={() => (showing = !showing)}> Toggle Animation </button>
 
 {#if showing}
     <div
