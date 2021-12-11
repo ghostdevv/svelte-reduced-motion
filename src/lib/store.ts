@@ -1,8 +1,8 @@
-import { writable } from 'svelte/store';
+import { readable } from 'svelte/store';
 
 const mediaQuery = () => window.matchMedia('(prefers-reduced-motion: reduce)');
 
-export const reducedMotion = writable(mediaQuery().matches, (set) => {
+export const reducedMotion = readable(mediaQuery().matches, (set) => {
     const query = mediaQuery();
 
     const update = (event: MediaQueryList | MediaQueryListEvent) =>
