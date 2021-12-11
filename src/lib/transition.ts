@@ -1,4 +1,4 @@
-import type { TransitionConfig } from 'svelte/transition';
+import type { FadeParams, TransitionConfig } from 'svelte/transition';
 import { fade } from 'svelte/transition';
 import { reducedMotion } from './store';
 import { get } from 'svelte/store';
@@ -9,7 +9,7 @@ export type OptionsPair<T> = [transition: Transition<T>, options?: T];
 export type AcceptedTransition<T> = Transition<T> | OptionsPair<T>;
 
 export const createTransition =
-    <Base, Fallback>(
+    <Base, Fallback = FadeParams>(
         base: AcceptedTransition<Base>,
         fallback: AcceptedTransition<Fallback> = fade,
     ) =>
