@@ -1,0 +1,1 @@
+# Svelte Reduced Motion
