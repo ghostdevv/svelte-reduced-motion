@@ -13,7 +13,7 @@ const config = {
 
         package: {
             exports: (file) => {
-                return file === 'index.ts';
+                return ['index.ts', 'transition.ts'].includes(file);
             },
         },
     },

@@ -65,3 +65,17 @@ Below you can find all of the different exports you can use!
         fade
     );
     ```
+
+# Prebuilt transitions
+
+We ship all the svelte transitions ready to go, they use the same `createTransition` function under the hood! This serves as a drop in replacement for any Svelte Transition.
+
+```html
+<script>
+    import { fly } from 'svelte-reduced-motion/transition';
+</script>
+
+<div transition:fly>
+    I change to fade on devices that prefer-reduced-motion
+</div>
+```

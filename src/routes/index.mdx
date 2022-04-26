@@ -1,5 +1,6 @@
 <script>
     import DemoCode from './_Demo.svelte?raw';
+    import Demo2 from './_Demo2.svelte';    
     import Demo from './_Demo.svelte';
 </script>
 
@@ -35,6 +36,28 @@ Code for demo above:
 {#if showing}
     <div
         transition:accessibleTransition={{ y: -20 }}
+        style="padding: 16px 0px;">
+        Hello World
+    </div>
+{/if}
+```
+
+You can also simplify this by using the prebuilt transitions:
+
+<Demo2 />
+
+```svelte
+<script>
+    import { fly } from 'svelte-reduced-motion/transition';
+
+    let showing;
+</script>
+
+<button on:click={() => (showing = !showing)}> Toggle Animation </button>
+
+{#if showing}
+    <div
+        transition:fly={{ y: -20 }}
         style="padding: 16px 0px;">
         Hello World
     </div>

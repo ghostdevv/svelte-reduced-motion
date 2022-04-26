@@ -1,23 +1,16 @@
-import type { FadeParams, TransitionConfig } from 'svelte/transition';
-import { fade } from 'svelte/transition';
-import { reducedMotion } from './store';
-import { get } from 'svelte/store';
+import { createTransition } from '$lib/createTransition';
+import * as transitions from 'svelte/transition';
 
-export type Transition<T> = (node: Element, options?: T) => TransitionConfig;
-export type OptionsPair<T> = [transition: Transition<T>, options?: T];
+export const crossfade = createTransition(transitions.fade);
 
-export type AcceptedTransition<T> = Transition<T> | OptionsPair<T>;
+export const scale = createTransition(transitions.scale);
 
-export const createTransition =
-    <Base, Fallback = FadeParams>(
-        base: AcceptedTransition<Base>,
-        fallback: AcceptedTransition<Fallback> = fade,
-    ) =>
-    (node: Element, options: Base & Fallback): TransitionConfig => {
-        const run = (transition: AcceptedTransition<Base | Fallback>) =>
-            Array.isArray(transition)
-                ? transition[0](node, { ...transition[1], options })
-                : transition(node, options);
+export const slide = createTransition(transitions.slide);
 
-        return get(reducedMotion) ? run(fallback) : run(base);
-    };
+export const blur = createTransition(transitions.blur);
+
+export const draw = createTransition(transitions.draw);
+
+export const fly = createTransition(transitions.fly);
+
+export const fade = transitions.fade;
