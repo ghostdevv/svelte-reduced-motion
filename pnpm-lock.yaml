@@ -4,6 +4,7 @@ specifiers:
   '@sveltejs/adapter-vercel': next
   '@sveltejs/kit': next
   ghostsui: ^1.3.3
+  mdsvex: ^0.10.5
   svelte: ^3.47.0
   svelte-preprocess: ^4.10.6
   svelte2tsx: ^0.5.9
@@ -12,8 +13,9 @@ specifiers:
 
 devDependencies:
   '@sveltejs/adapter-vercel': 1.0.0-next.50
-  '@sveltejs/kit': 1.0.0-next.321_svelte@3.47.0
+  '@sveltejs/kit': 1.0.0-next.322_svelte@3.47.0
   ghostsui: 1.3.3
+  mdsvex: 0.10.5_svelte@3.47.0
   svelte: 3.47.0
   svelte-preprocess: 4.10.6_svelte@3.47.0+typescript@4.6.3
   svelte2tsx: 0.5.9_svelte@3.47.0+typescript@4.6.3
@@ -36,8 +38,8 @@ packages:
       esbuild: 0.14.38
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.321_svelte@3.47.0:
-    resolution: {integrity: sha512-Egdmxc+oxmKKhXAtLLHj6LnZQnfxgk/DpdRitDxDlSQq/hj1zSVswe3kGjPDaquNMkxXbvZcHwhbZvNnVTnWag==}
+  /@sveltejs/kit/1.0.0-next.322_svelte@3.47.0:
+    resolution: {integrity: sha512-RPGu1LzE7PhPEqMf/MjGp9CAhBYtYbjpEKMR89KlfvNHCnRuXFdoR4Yrv9o1yGGN+kHSLcRJzibKHxe34AebJA==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -90,6 +92,10 @@ packages:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
       '@types/node': 17.0.27
+    dev: true
+
+  /@types/unist/2.0.6:
+    resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: true
 
   /anymatch/3.1.2:
@@ -513,6 +519,18 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
+  /mdsvex/0.10.5_svelte@3.47.0:
+    resolution: {integrity: sha512-/B23WZn5Vjrjh7Qp2YsOXLkU9YFm59IEylKNXC10o05ZaCP4LNv32tGXKP6aEssss6hk/LdISJuneELHFIS2pQ==}
+    peerDependencies:
+      svelte: 3.x
+    dependencies:
+      '@types/unist': 2.0.6
+      prism-svelte: 0.4.7
+      prismjs: 1.28.0
+      svelte: 3.47.0
+      vfile-message: 2.0.4
+    dev: true
+
   /min-indent/1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
@@ -604,6 +622,15 @@ packages:
       nanoid: 3.3.3
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: true
+
+  /prism-svelte/0.4.7:
+    resolution: {integrity: sha512-yABh19CYbM24V7aS7TuPYRNMqthxwbvx6FF/Rw920YbyBWO3tnyPIqRMgHuSVsLmuHkkBS1Akyof463FVdkeDQ==}
+    dev: true
+
+  /prismjs/1.28.0:
+    resolution: {integrity: sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw==}
+    engines: {node: '>=6'}
     dev: true
 
   /readdirp/3.6.0:
@@ -787,6 +814,19 @@ packages:
     resolution: {integrity: sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
+
+  /unist-util-stringify-position/2.0.3:
+    resolution: {integrity: sha512-3faScn5I+hy9VleOq/qNbAd6pAx7iH5jYBMS9I1HgQVijz/4mv5Bvw5iw1sC/90CODiKo81G/ps8AJrISn687g==}
+    dependencies:
+      '@types/unist': 2.0.6
+    dev: true
+
+  /vfile-message/2.0.4:
+    resolution: {integrity: sha512-DjssxRGkMvifUOJre00juHoP9DPWuzjxKuMDrhNbk2TdaYYBNMStsNhEOt3idrtI12VQYM/1+iM0KOzXi4pxwQ==}
+    dependencies:
+      '@types/unist': 2.0.6
+      unist-util-stringify-position: 2.0.3
     dev: true
 
   /vite/2.9.5:

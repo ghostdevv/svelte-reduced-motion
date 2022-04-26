@@ -1,6 +1,6 @@
 <script>
     import { reducedMotion, createTransition } from '$lib';
-    import { fade, fly, draw } from 'svelte/transition';
+    import { fly } from 'svelte/transition';
 
     let showing;
 
@@ -10,14 +10,6 @@
 <p>
     Reduced Motion: {$reducedMotion}
 </p>
-
-<p>
-    You can test this in Chrome easily by opening dev tools, pressing the three
-    dots in the top right, then going on more tools > rendering and finding the
-    "Emulate css media feature prefers reduced motion"
-</p>
-
-<hr />
 
 <button on:click={() => (showing = !showing)}> Toggle Animation </button>
 
