@@ -2,9 +2,10 @@
 
 A collection of utilities for working with reduced motion in svelte! Please [create an issue](https://github.com/ghostdevv/svelte-reduced-motion/issues/new) if something is missing/wrong
 
-# Demo
+# Resources
 
-https://svelte-reduced-motion.vercel.app
+- [Demo](https://svelte-reduced-motion.vercel.app )
+- [Blog Post](https://ghostdev.xyz/posts/working-with-reduced-motion-in-svelte) - Covers the importance of `prefers-reduced-motion` and how to use this package
 
 # Installing
 
@@ -30,9 +31,23 @@ Below you can find all of the different exports you can use!
     </p>
     ```
 
--   ## Transitions
+-   ## Prebuilt transitions
 
-    You might want to use a motion-ful transition such as fly, and fallback to fade if the users perfers reduced motion. With createTransition we can do that (fade is the default fallback but any svelte transition can be used in it's place!)
+    We ship all the svelte transitions ready to go, they use the same `createTransition` function under the hood! This serves as a drop in replacement for any Svelte Transition.
+
+    ```html
+    <script>
+        import { fly } from 'svelte-reduced-motion/transition';
+    </script>
+
+    <div transition:fly>
+        I change to fade on devices that prefer-reduced-motion
+    </div>
+    ```
+
+-   ## Custom Transitions
+
+    If you want to use a fallback of something other than `fade` or need more control, this method is for you.
 
     `createTransition(base, fallback)`
 
@@ -65,17 +80,3 @@ Below you can find all of the different exports you can use!
         fade
     );
     ```
-
-# Prebuilt transitions
-
-We ship all the svelte transitions ready to go, they use the same `createTransition` function under the hood! This serves as a drop in replacement for any Svelte Transition.
-
-```html
-<script>
-    import { fly } from 'svelte-reduced-motion/transition';
-</script>
-
-<div transition:fly>
-    I change to fade on devices that prefer-reduced-motion
-</div>
-```
