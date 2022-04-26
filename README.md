@@ -31,9 +31,9 @@ Below you can find all of the different exports you can use!
     </p>
     ```
 
--   ## Prebuilt transitions
+-   ## Prebuilt Transitions
 
-    We ship all the svelte transitions ready to go, they use the same `createTransition` function under the hood! This serves as a drop in replacement for any Svelte Transition.
+    We ship all the svelte transitions ready to go, they use the same `createTransition` function under the hood! This serves as a drop in replacement for any Svelte Transition and allows you to use accesible transitions without any effort.
 
     ```html
     <script>
