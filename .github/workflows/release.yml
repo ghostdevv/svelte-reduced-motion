@@ -25,12 +25,15 @@ jobs:
       - name: Install
         run: pnpm install
 
+      - name: Package
+        run: pnpm package
+
       # - name: Build
       #   run: pnpm build
 
       - name: Publish
         run: |
           pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
-          pnpm publish --no-git-checks
+          cd package && pnpm publish --no-git-checks
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
