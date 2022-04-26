@@ -1,4 +1,4 @@
-import { createTransition } from '$lib/createTransition';
+import { createTransition } from './createTransition';
 import * as transitions from 'svelte/transition';
 
 export const crossfade = createTransition(transitions.fade);
