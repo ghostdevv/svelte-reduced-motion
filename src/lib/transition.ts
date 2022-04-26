@@ -7,7 +7,7 @@ export const scale = createTransition(transitions.scale);
 
 export const slide = createTransition(transitions.slide);
 
-export const blur = createTransition(transitions.blur);
+export const blur = transitions.blur;
 
 export const draw = createTransition(transitions.draw);
 
