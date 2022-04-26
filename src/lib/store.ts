@@ -2,18 +2,23 @@ import { readable } from 'svelte/store';
 
 const mediaQuery = () => window.matchMedia('(prefers-reduced-motion: reduce)');
 
-export const reducedMotion = readable(mediaQuery().matches, (set) => {
-    const query = mediaQuery();
+export const reducedMotion = readable(
+    typeof window === 'undefined' ? false : mediaQuery().matches,
+    (set) => {
+        if (typeof window === 'undefined') return;
 
-    const update = (event: MediaQueryList | MediaQueryListEvent) =>
-        set(event.matches);
+        const query = mediaQuery();
 
-    // Set initial value of query
-    update(query);
+        const update = (event: MediaQueryList | MediaQueryListEvent) =>
+            set(event.matches);
 
-    // Listener
-    query.addEventListener('change', update);
+        // Set initial value of query
+        update(query);
 
-    // Remove listener on destroy
-    return () => query.removeEventListener('change', update);
-});
+        // Listener
+        query.addEventListener('change', update);
+
+        // Remove listener on destroy
+        return () => query.removeEventListener('change', update);
+    },
+);
