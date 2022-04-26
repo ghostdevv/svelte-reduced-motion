@@ -1,6 +1,6 @@
 # Svelte Reduced Motion
 
-A collection of utilities for working with reduced motion in svelte!
+A collection of utilities for working with reduced motion in svelte! Please [create an issue](https://github.com/ghostdevv/svelte-reduced-motion/issues/new) if something is missing/wrong
 
 # Installing
 
