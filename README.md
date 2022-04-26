@@ -4,7 +4,7 @@ A collection of utilities for working with reduced motion in svelte! Please [cre
 
 # Resources
 
-- [Demo](https://svelte-reduced-motion.vercel.app )
+- [Demo](https://svelte-reduced-motion.vercel.app)
 - [Blog Post](https://ghostdev.xyz/posts/working-with-reduced-motion-in-svelte) - Covers the importance of `prefers-reduced-motion` and how to use this package
 
 # Installing
