@@ -1,6 +1,6 @@
 import type { FadeParams, TransitionConfig } from 'svelte/transition';
 import { fade } from 'svelte/transition';
-import { reducedMotion } from './store';
+import { reducedMotion } from './store.js';
 import { get } from 'svelte/store';
 
 export type Transition<T> = (node: Element, options?: T) => TransitionConfig;
