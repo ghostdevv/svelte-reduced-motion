@@ -20,20 +20,17 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v2.0.1
         with:
-            version: 6.23.2
+            version: 8.0.0
 
       - name: Install
         run: pnpm install
 
-      - name: Package
-        run: pnpm package
-
-      # - name: Build
-      #   run: pnpm build
+      - name: Build
+        run: pnpm run package
 
       - name: Publish
         run: |
           pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
-          cd package && pnpm publish --no-git-checks
+          pnpm publish --no-git-checks
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}

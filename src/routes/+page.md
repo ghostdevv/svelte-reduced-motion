@@ -1,7 +1,7 @@
 <script>
-    import DemoCode from './_Demo.svelte?raw';
-    import Demo2 from './_Demo2.svelte';    
-    import Demo from './_Demo.svelte';
+    import DemoCode from './Demo.svelte?raw';
+    import Demo2 from './Demo2.svelte';    
+    import Demo from './Demo.svelte';
 </script>
 
 You can set if it's reduced motion in Chrome easily by opening dev

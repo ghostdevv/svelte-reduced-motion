@@ -1,3 +1,7 @@
+<script lang="ts">
+    import 'ghostsui';
+</script>
+
 <main class="col">
     <slot />
 </main>

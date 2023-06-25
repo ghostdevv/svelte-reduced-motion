@@ -1,21 +1,15 @@
-import vercel from '@sveltejs/adapter-vercel';
-import preprocess from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import adapter from '@sveltejs/adapter-auto';
 import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-    preprocess: [preprocess(), mdsvex({ extensions: ['mdx'] })],
+    preprocess: [vitePreprocess(), mdsvex({ extensions: ['md'] })],
 
-    extensions: ['.svelte', '.mdx'],
+    extensions: ['.svelte', '.md'],
 
     kit: {
-        adapter: vercel(),
-
-        package: {
-            exports: (file) => {
-                return ['index.ts', 'transition.ts'].includes(file);
-            },
-        },
+        adapter: adapter(),
     },
 };
 
