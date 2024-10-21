@@ -6,8 +6,8 @@ A collection of utilities for working with reduced motion in svelte! Please [cre
 
 # Resources
 
-- [Demo](https://svelte-reduced-motion.vercel.app)
-- [Blog Post](https://ghostdev.xyz/posts/working-with-reduced-motion-in-svelte) - Covers the importance of `prefers-reduced-motion` and how to use this package
+-   [Demo](https://svelte-reduced-motion.vercel.app)
+-   [Blog Post](https://ghostdev.xyz/posts/working-with-reduced-motion-in-svelte) - Covers the importance of `prefers-reduced-motion` and how to use this package
 
 # Installing
 
@@ -25,12 +25,10 @@ Below you can find all of the different exports you can use!
 
     ```html
     <script>
-        import { reducedMotion } from 'svelte-reduced-motion';
+    	import { reducedMotion } from 'svelte-reduced-motion';
     </script>
 
-    <p>
-        Reduced Motion: {$reducedMotion ? 'enabled' : 'disabled'}
-    </p>
+    <p>Reduced Motion: {$reducedMotion ? 'enabled' : 'disabled'}</p>
     ```
 
 -   ## Prebuilt Transitions
@@ -39,11 +37,11 @@ Below you can find all of the different exports you can use!
 
     ```html
     <script>
-        import { fly } from 'svelte-reduced-motion/transition';
+    	import { fly } from 'svelte-reduced-motion/transition';
     </script>
 
     <div transition:fly>
-        I change to fade on devices that prefer-reduced-motion
+    	I change to fade on devices that prefer-reduced-motion
     </div>
     ```
 
@@ -73,12 +71,12 @@ Below you can find all of the different exports you can use!
 
     ```js
     const accessibleTransition = createTransition(
-        [fly, { duration: 1000 }],
-        [fade, { duration: 200 }]
+    	[fly, { duration: 1000 }],
+    	[fade, { duration: 200 }],
     );
 
     const accessibleTransition = createTransition(
-        [fly, { duration: 750, y: -20 }],
-        fade
+    	[fly, { duration: 750, y: -20 }],
+    	fade,
     );
     ```
