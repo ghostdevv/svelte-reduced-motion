@@ -1,23 +1,43 @@
-import type { FadeParams, TransitionConfig } from 'svelte/transition';
-import { fade } from 'svelte/transition';
-import { reducedMotion } from './store.js';
+import type { TransitionConfig } from 'svelte/transition';
+import { fade, slide } from 'svelte/transition';
+import { reducedMotion } from './store';
 import { get } from 'svelte/store';
 
-export type Transition<T> = (node: Element, options?: T) => TransitionConfig;
-export type OptionsPair<T> = [transition: Transition<T>, options?: T];
+type AnyElement = Element | SVGElement;
 
-export type AcceptedTransition<T> = Transition<T> | OptionsPair<T>;
+export type Transition<N extends AnyElement, O> = (
+	node: N,
+	options?: O,
+) => TransitionConfig;
 
-export const createTransition =
-	<Base, Fallback = FadeParams>(
-		base: AcceptedTransition<Base>,
-		fallback: AcceptedTransition<Fallback> = fade,
-	) =>
-	(node: Element, options: Base & Fallback): TransitionConfig => {
-		const run = (transition: AcceptedTransition<Base | Fallback>) =>
-			Array.isArray(transition)
-				? transition[0](node, { ...transition[1], options })
+export type OptionsPair<N extends AnyElement, O> = [
+	transition: Transition<N, O>,
+	options?: O,
+];
+
+export type AcceptedTransition<N extends AnyElement, O> =
+	| Transition<N, O>
+	| OptionsPair<N, O>;
+
+export function createTransition<
+	Base extends TransitionConfig,
+	Fallback extends TransitionConfig,
+	Node extends AnyElement,
+>(
+	base: AcceptedTransition<Node, Base>,
+	fallback: AcceptedTransition<Node, Fallback> = fade,
+) {
+	return (node: Node, options: Base & Fallback): TransitionConfig => {
+		function run(
+			transition:
+				| AcceptedTransition<Node, Base>
+				| AcceptedTransition<Node, Fallback>,
+		) {
+			return Array.isArray(transition)
+				? transition[0](node, { ...transition[1], ...options })
 				: transition(node, options);
+		}
 
 		return get(reducedMotion) ? run(fallback) : run(base);
 	};
+}
