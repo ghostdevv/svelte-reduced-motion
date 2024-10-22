@@ -66,6 +66,12 @@ You can also import the `prefersReducedMotion` store to make checks for yourself
 {/if}
 ```
 
+# Migrating from v1 to v2
+
+-   Requires Svelte 5
+-   The `reducedMotion` store is now called `prefersReducedMotion` to match the media query
+-   The types have been tweaked to be more compatible, please let me know if there any issues.
+
 # Support
 
 -   Create a issue on the [github](https://github.com/ghostdevv/svelte-reduced-motion/issues/new)
