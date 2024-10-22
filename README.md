@@ -1,13 +1,6 @@
 # Svelte Reduced Motion
 
-Works with Svelte 3 & 4!
-
-A collection of utilities for working with reduced motion in svelte! Please [create an issue](https://github.com/ghostdevv/svelte-reduced-motion/issues/new) if something is missing/wrong
-
-# Resources
-
--   [Demo](https://svelte-reduced-motion.vercel.app)
--   [Blog Post](https://ghostdev.xyz/posts/working-with-reduced-motion-in-svelte) - Covers the importance of `prefers-reduced-motion` and how to use this package
+A library for working with reduced motion and Svelte transitions. Read more about [why reduced motion is important](https://ghostdev.xyz/posts/working-with-reduced-motion-in-svelte/). Please [create an issue](https://github.com/ghostdevv/svelte-reduced-motion/issues/new) if something is missing/wrong.
 
 # Installing
 
@@ -15,68 +8,65 @@ A collection of utilities for working with reduced motion in svelte! Please [cre
 npm install svelte-reduced-motion -D
 ```
 
+This library works with Svelte 5 only, [checkout v1](https://www.npmjs.com/package/svelte-reduced-motion/v/1.1.1) for Svelte 3/4 support.
+
 # Usage
 
-Below you can find all of the different exports you can use!
+Below is some use cases for the library, checkout the [full docs here](https://svelte-reduced-motion.willow.codes).
 
--   ## Store
+## Transitions
 
-    If you want to detect & react to reduced motion in Svelte you can use the store `reducedMotion`, for example:
+The easiest way to get started is with the `svelte/transition` wrapper. This wraps all official transitions with our `createTransition` api, which will automatically use fade when reduced motion is requested.
 
-    ```html
-    <script>
-    	import { reducedMotion } from 'svelte-reduced-motion';
-    </script>
+```diff
+<script>
+-	import { fly } from 'svelte/transition';
++	import { fly } from 'svelte-reduced-motion/transition';
+</script>
+```
 
-    <p>Reduced Motion: {$reducedMotion ? 'enabled' : 'disabled'}</p>
-    ```
+You can provide your own fallback transition with the `createTransition` api. We'll import the regular fly and blur transitions for this. The first argument is the target transition, with the second being the fallback.
 
--   ## Prebuilt Transitions
+```svelte
+<script>
+	import { createTransition } from 'svelte-reduced-motion';
+	import { fly, blur } from 'svelte/transition';
 
-    We ship all the svelte transitions ready to go, they use the same `createTransition` function under the hood! This serves as a drop in replacement for any Svelte Transition and allows you to use accesible transitions without any effort.
+	const accessibleFly = createTransition(fly, blur);
+</script>
+```
 
-    ```html
-    <script>
-    	import { fly } from 'svelte-reduced-motion/transition';
-    </script>
+If we want to specify options per transition, you can do that in the createTransition fn. Any options passed to the final transition will overwrite them, and still cause a merge.
 
-    <div transition:fly>
-    	I change to fade on devices that prefer-reduced-motion
-    </div>
-    ```
+```svelte
+<script>
+	import { createTransition } from 'svelte-reduced-motion';
+	import { fly, blur } from 'svelte/transition';
 
--   ## Custom Transitions
+	const accessibleFly = createTransition(
+		[fly, { y: -20, duration: 200 }],
+		[blur, { duration: 500 }],
+	);
+</script>
 
-    If you want to use a fallback of something other than `fade` or need more control, this method is for you.
+<div use:accessibleFly></div>
+```
 
-    `createTransition(base, fallback)`
+## Store
 
-    ```html
-    <script>
-        import { createTransition } from 'svelte-reduced-motion';
-        import { fly } from 'svelte/transition';
+You can also import the `reducedMotion` store to make checks for yourself.
 
-        const accessibleTransition = createTransition(fly);
-    </script>
+```svelte
+<script>
+	import { reducedMotion } from 'svelte-reduced-motion';
+</script>
 
-    <!-- You can even specify the options as usual-->
-    <div transition:accessibleTransition={{ y: -20 }}>
-        Hello world
-    </div>
-    ```
+{#if $reducedMotion}
+	<p>The user prefers reduced motion!</p>
+{/if}
+```
 
-    ### But what if both my transitions need different options?
+# Support
 
-    No problem, here are a few examples
-
-    ```js
-    const accessibleTransition = createTransition(
-    	[fly, { duration: 1000 }],
-    	[fade, { duration: 200 }],
-    );
-
-    const accessibleTransition = createTransition(
-    	[fly, { duration: 750, y: -20 }],
-    	fade,
-    );
-    ```
+-   Create a issue on the [github](https://github.com/ghostdevv/svelte-reduced-motion/issues/new)
+-   Join the [discord](https://discord.gg/2Vd4wAjJnm)<br>
