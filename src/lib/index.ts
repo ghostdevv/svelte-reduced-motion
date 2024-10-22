@@ -1,2 +1,7 @@
-export * from './store.js';
-export * from './createTransition.js';
+export { prefersReducedMotion as reducedMotion } from './store';
+export {
+	createTransition,
+	type AcceptedTransition,
+	type OptionsPair,
+	type Transition,
+} from './createTransition';
