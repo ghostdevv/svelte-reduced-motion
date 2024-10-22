@@ -13,7 +13,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"package": "svelte-kit sync && svelte-package"
+		"package": "svelte-kit sync && svelte-package && publint"
 	},
 	"devDependencies": {
 		"@shikijs/transformers": "^1.22.0",
@@ -25,6 +25,7 @@
 		"ghostsui": "2.0.0-beta.2",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.7",
+		"publint": "^0.2.11",
 		"sass": "^1.80.3",
 		"shiki": "^1.22.0",
 		"svelte": "^5.0.5",
