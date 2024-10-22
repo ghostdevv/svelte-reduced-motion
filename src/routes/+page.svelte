@@ -52,8 +52,8 @@
 	<Example code={data.examples.individualOptions}></Example>
 
 	<p>
-		You can also import the <code>reducedMotion</code> store to make checks for
-		yourself.
+		You can also import the <code>prefersReducedMotion</code> store to make checks
+		for yourself.
 	</p>
 
 	<Example code={data.examples.store}></Example>

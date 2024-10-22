@@ -49,10 +49,10 @@ export async function load() {
 			`),
 			store: await highlight(dedent`
 				<script>
-					import { reducedMotion } from 'svelte-reduced-motion';	
+					import { prefersReducedMotion } from 'svelte-reduced-motion';	
 				</script>
 
-				{#if $reducedMotion}
+				{#if $prefersReducedMotion}
 					<p>The user prefers reduced motion!</p>
 				{/if}
 			`),

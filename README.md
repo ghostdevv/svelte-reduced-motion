@@ -54,14 +54,14 @@ If we want to specify options per transition, you can do that in the createTrans
 
 ## Store
 
-You can also import the `reducedMotion` store to make checks for yourself.
+You can also import the `prefersReducedMotion` store to make checks for yourself.
 
 ```svelte
 <script>
-	import { reducedMotion } from 'svelte-reduced-motion';
+	import { prefersReducedMotion } from 'svelte-reduced-motion';
 </script>
 
-{#if $reducedMotion}
+{#if $prefersReducedMotion}
 	<p>The user prefers reduced motion!</p>
 {/if}
 ```

@@ -1,4 +1,4 @@
-export { reducedMotion } from './store';
+export { prefersReducedMotion as reducedMotion } from './store';
 export {
 	createTransition,
 	type AcceptedTransition,

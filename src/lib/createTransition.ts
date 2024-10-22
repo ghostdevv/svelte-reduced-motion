@@ -1,6 +1,6 @@
 import type { TransitionConfig } from 'svelte/transition';
-import { fade, slide } from 'svelte/transition';
-import { reducedMotion } from './store';
+import { prefersReducedMotion } from './store';
+import { fade } from 'svelte/transition';
 import { get } from 'svelte/store';
 
 type AnyElement = Element | SVGElement;
@@ -38,6 +38,6 @@ export function createTransition<
 				: transition(node, options);
 		}
 
-		return get(reducedMotion) ? run(fallback) : run(base);
+		return get(prefersReducedMotion) ? run(fallback) : run(base);
 	};
 }
